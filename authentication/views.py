@@ -1,8 +1,23 @@
 from django.shortcuts import render, redirect
 from .forms import LoginForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 import re
 # Create your views here.
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = UserCreationForm()
+    return render(request, 'authentication/signup.html', {'form': form})
 
 def log_in(request):
     if request.user.is_authenticated:
@@ -34,6 +49,6 @@ def log_out(request):
         logout(request)
         if goto == '':
             return redirect(f'../')
-        return redirect(f'../{goto}/')
+        return redirect(f'../{goto}')
     else:
         return redirect('/')

@@ -1,0 +1,92 @@
+.background-basic {
+    background-color: #EBF2FA;
+}
+
+.pyczat-nav-color {
+    background-color: #05668D;
+}
+
+.main-container {
+    margin: 20px;
+}
+
+.login-container {
+    margin: auto;
+    width: 50%;
+    background-color: #fff;
+    height: 350px;
+    padding: 100px;
+}
+
+.signup-container {
+    margin: auto;
+    width: 50%;
+    background-color: #fff;
+    height: 500px;
+    padding: 40px;
+}
+
+.login-items, .signup-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-text {
+    display: flex;
+    justify-content: center;
+}
+
+.login-items p label {
+    width: 120px;
+}
+
+.signup-items p label {
+    width: 170px;
+}
+
+.signup-items p {
+    width: 500px;
+}
+
+.btn-login {
+    background-color: #679436 !important;
+    border-color: #679436 !important;
+    width: 308px;
+}
+
+.signup-items p span {
+    display: block;
+    font-size: small;
+    color: #679436;
+}
+
+.signup-container h1 {
+    margin-bottom: 30px;
+}
+
+.signup-items ul {
+    list-style: none;
+    font-size: small;
+    color: #679436;
+}
+
+.calendar table {
+    display: flex;
+    justify-content: center;
+}
+
+.calendar table th,
+.calendar table td {
+    border: 1px solid black;
+    width: 250px;
+}
+
+.calendar-meet a {
+    background-color: #679436 !important;
+    border-color: #679436 !important;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    justify-content: space-around;
+}

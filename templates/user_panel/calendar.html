@@ -1,16 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Calendar</title>
-</head>
-<body>
-    <a href="/meet">Meet</a>
-    <p>Your calendar:</p>
-    <ol>To do:
+{% extends "base.html" %}
+{% block content %}
+    <div class="calendar-meet">
+        <a class="btn btn-primary" href="/meet" role="button">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+            Meet
+        </a>
+    </div>
+
+    <h3>Your calendar:</h3>
+
+    {#todo - cały do zmiany#}
+    {#todo - https://alexpnt.github.io/2017/07/15/django-calendar/#}
+    <div class="calendar">
+        <div style="display: flex; justify-content: center">Month</div>
+        <table>
+          <tr>
+            <th>MON</th>
+            <th>TUE</th>
+            <th>WED</th>
+            <th>THU</th>
+            <th>FRI</th>
+            <th>SAT</th>
+            <th>SUN</th>
+          </tr>
+          <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+            <td>Alfreds Futterkiste</td>
+          </tr>
+            <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+            <td>Alfreds Futterkiste</td>
+          </tr>
+
+        </table>
+    </div>
+
+
+    <div style="background-color: silver; border: 1px solid red; bottom: 0; width: 95%; position: absolute; margin: 30px;">
+    <span>----- To do -----</span>
+    <ol>
         <li>Draw a grid with calendar</li>
         <li>Read meeting data from databse and draw it on grid</li>
         <li>Make that whole crap pretty :) </li>
     </ol>
-</body>
-</html>
+    </div>
+{% endblock %}

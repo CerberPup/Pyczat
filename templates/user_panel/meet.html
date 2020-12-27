@@ -1,13 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div style="background-color: silver; border: 1px solid red; bottom: 0; width: 95%; position: absolute; margin: 30px;">
-    <span>----- To do: Create new meeting -----</span>
-    <ol>
-        <li> Create django model </li>
-        <li> Create form for model </li>
-        <li> Store User's data in database </li>
-    </ol>
-    </div>
+<form method="post" class="event-container">
+  {% csrf_token %}
+  <table class="form form-table">
+    {{ form }}
+    <tr class="right">
+        <td><a class="btn btn-info" href="{% url 'calendar' %}"> Go back to calendar </a></td>
+        <td><button type="submit" class="btn btn-info"> Save </button></td>
+    </tr>
+  </table>
+</form>
+
+{#    <div style="background-color: silver; border: 1px solid red; bottom: 0; width: 95%; position: absolute; margin: 30px;">#}
+{#    <span>----- To do: Create new meeting -----</span>#}
+{#    <ol>#}
+{#        <li> Create django model </li>#}
+{#        <li> Create form for model </li>#}
+{#        <li> Store User's data in database </li>#}
+{#    </ol>#}
+{#    </div>#}
 
 {% endblock %}

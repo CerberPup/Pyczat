@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import calendar, meet
+from django.conf.urls import url
+from .views import CalendarView, event
 
 urlpatterns = [
-    #path('', index, name='view_news'),
-    path('calendar', calendar),
-    path('meet', meet)
+    url(r'^calendar/$', CalendarView.as_view(), name='calendar'),
+    url(r'^event/new/$', event, name='event_new'),
+    url(r'^event/edit/(?P<event_id>\d+)/$', event, name='event_edit'),
 ]

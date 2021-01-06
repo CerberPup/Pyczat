@@ -57,6 +57,11 @@
     color: #495057;
 }
 
+#navbarNav {
+    display: flex;
+    justify-content: space-between;
+}
+
 .btn-login {
     background-color: #679436 !important;
     border-color: #679436 !important;
@@ -221,14 +226,14 @@ table tbody tr:nth-child(2) {
     margin: 0 20px;
 }
 
-.event-container input, .event-container textarea {
+.event-container input, .event-container select, .event-container textarea {
     border: 1px solid #ced4da;
     border-radius: .25rem;
     color: #495057;
     width: 100%;
 }
 
-.event-container input {
+.event-container input, .event-container select {
     height: 35px;
 }
 
@@ -242,4 +247,25 @@ table tbody tr:nth-child(2) {
 .event-container a{
   background-color: #05668D !important;
   border-color: #05668D !important;
+}
+
+/*events*/
+.my-events {
+    width: 800px !important;
+}
+
+.my-events th {
+    background-color: #05668D;
+    color: #ffffff;
+}
+
+.my-events tr:hover td {
+    background-color: #cde4b4;
+    color: #000000;
+    cursor: pointer;
+}
+
+.my-events td {
+    background-color: #ffffff;
+    color: #000000;
 }

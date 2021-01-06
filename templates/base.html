@@ -19,17 +19,30 @@
           </li>
             {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="/calendar">My Calendar</a>
+            <a class="nav-link" href="/calendar">Calendar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
+            <a class="nav-link" href="/events">Events</a>
           </li>
-            {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link" href="/invitations">Invitations</a>
           </li>
             {% endif %}
         </ul>
+      {% if user.is_authenticated == False %}
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+        </ul>
+      {% endif %}
+      {% if user.is_authenticated %}
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+      {% endif %}
       </div>
     </nav>
 

@@ -205,7 +205,7 @@ table tbody tr:nth-child(2) {
 
 /*event*/
 
-.event-container {
+.event-container, .invite-container {
     margin: auto;
     width: 50%;
     background-color: #fff;
@@ -226,18 +226,18 @@ table tbody tr:nth-child(2) {
     margin: 0 20px;
 }
 
-.event-container input, .event-container select, .event-container textarea {
+.event-container input, .event-container select, .event-container textarea, .invite-container input, .invite-container select {
     border: 1px solid #ced4da;
     border-radius: .25rem;
     color: #495057;
     width: 100%;
 }
 
-.event-container input, .event-container select {
+.event-container input, .event-container select, .invite-container input, .invite-container select  {
     height: 35px;
 }
 
-.event-container button{
+.event-container button, .invite-container button{
     margin: 10px 0;
     background-color: #679436 !important;
     border-color: #679436 !important;
@@ -249,18 +249,23 @@ table tbody tr:nth-child(2) {
   border-color: #05668D !important;
 }
 
-/*events*/
-.my-events {
-    width: 800px !important;
+.invite-container .submit-btn {
+    display: flex;
+    justify-content: center;
 }
 
+.invite-container .invite-info {
+    margin: 0 0 20px 0;
+}
+
+/*events*/
 .my-events th {
     background-color: #05668D;
     color: #ffffff;
 }
 
 .my-events tr:hover td {
-    background-color: #cde4b4;
+    background-color: #f2f2f2;
     color: #000000;
     cursor: pointer;
 }
@@ -268,4 +273,25 @@ table tbody tr:nth-child(2) {
 .my-events td {
     background-color: #ffffff;
     color: #000000;
+}
+
+/*homepage*/
+.meetlook {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+    color: #05668D;
+}
+
+.meetlook-span {
+    display: flex;
+    justify-content: center;
+    color: #05668D;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.homepage-hr {
+    width: 500px;
+    border-color: #05668D;
 }

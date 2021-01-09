@@ -7,7 +7,7 @@ import calendar
 
 from .models import *
 from .utils import Calendar
-from .forms import EventForm
+from .forms import EventForm, EventUserForm
 
 class CalendarView(generic.ListView):
     model = Event
@@ -68,6 +68,25 @@ def event(request, event_id=None):
         return HttpResponseRedirect(reverse('calendar'))
     return render(request, 'user_panel/meet.html', {'form': form})
 
+def event_invite(request):
+    instance = Invitation()
+    form = EventUserForm(request.POST or None, instance=instance, user=request.user)
+
+    if request.POST and form.is_valid():
+
+        invitation_exists = EventUser.objects.filter(
+            event_id=request.POST.get('event'),
+            user_id=request.POST.get('user')
+        ).exists()
+
+        if not invitation_exists:
+            instance.event_id = request.POST['event']
+            instance.user_id = request.POST['user']
+            instance.save()
+        return HttpResponseRedirect(reverse('calendar'))
+
+    return render(request, 'user_panel/invite.html', {'form': form})
+
 
 def getLoggedUser(request):
     return request.user
@@ -76,8 +95,37 @@ def events(request):
     eventUsers = list(EventUser.objects.filter(user=request.user).values_list('event_id', flat=True))
     events = Event.objects.filter(pk__in=eventUsers)
 
+    if request.POST:
+        if 'remove' in request.POST:
+            Event.objects.filter(id=request.POST.get('remove')).delete()
+            return HttpResponseRedirect('/events')
+
     # todo - zwracać do events.html eventy z przeszłości, przyszłości i aktualne (?)
     return render(request, 'user_panel/events.html', {'events': events})
 
 def invitations(request):
-    return render(request, 'user_panel/invitations.html')
+    invitations = list(Invitation.objects.filter(user=request.user).values_list('event_id', flat=True))
+    events = Event.objects.filter(pk__in=invitations)
+
+    if request.POST:
+        instance = EventUser()
+        if 'accept' in request.POST:
+            instance.user = request.user
+            instance.event_id = request.POST.get('accept')
+            instance.save()
+            invitation_to_delete = Invitation.objects.filter(
+                user_id=request.user.id,
+                event_id=request.POST.get('accept')
+            )
+            invitation_to_delete.delete()
+            return HttpResponseRedirect(reverse('calendar'))
+        else:
+            invitation_to_delete = Invitation.objects.filter(
+                user_id=request.user.id,
+                event_id=request.POST.get('decline')
+            )
+
+            invitation_to_delete.delete()
+            return HttpResponseRedirect('/invitations')
+
+    return render(request, 'user_panel/invitations.html', {'events': events})
